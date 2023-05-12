@@ -5,6 +5,7 @@ var app = express();
 var cors = require('cors')
 var user_templates = require("./user_templates.json");
 var demo_templates = require("./demo_templates.json");
+
 // to write
 const path_user = "./user_templates.json";
 const path_demo = "./demo_templates.json";
@@ -62,7 +63,6 @@ app.post('/user/create-template', function(req, res){
    }
 });
 
-
 app.get("/demo/get-all-templates",function(req,res){
    var data = demo_templates.demo_templates.map((item ,i)=> {
       return {
@@ -74,6 +74,7 @@ app.get("/demo/get-all-templates",function(req,res){
  
    return res.json(data);
 });
+
 app.get("/demo/get-specific-template/:id",function(req,res){
    console.log(req.params.id);
    var template = demo_templates['demo_templates'].filter((item)=>{
@@ -82,16 +83,63 @@ app.get("/demo/get-specific-template/:id",function(req,res){
    return res.json(template[0]);
 });
 
+app.post("/product/get-preview-image",function(req,res){
+   var product_images = require("./product_images.json")
+   product_images = product_images['product_images'];
+   function randomNum_create(max,min){
+      let arr=[];
+      for (i = 0; i < max; i++) {
+          x = Math.floor( Math.random() * max) + min;
+          if(arr.includes(x) == true){
+              i=i-1;
+          }else{
+              if(x>max==false){
+                  arr.push(x);
+              }
+          }
+      }
+      return arr;
+   }
+   function getProductByRandom(randomNum){
+      let data = [];
+      [0,0,0,0,0].forEach((arg,i)=>{
 
-// app.post('/user/create-template', function(req, res){
-//    console.log("create");
-//    demo_templates['demo_templates'].push(req.body.data);
-        
-//    try {
-//        writeFileSync(path_demo, JSON.stringify(demo_templates, null, 2), "utf8");
-//        return res.json("Data successfully saved");
-//    } catch (error) {
-//       return res.json("An error has occurred ", error);
-//    }
-// });
+         product_images.forEach((element,index) => {
+
+             if(index == randomNum[i]){
+               data.push(element);
+             }
+
+         });
+
+         if(i==4){
+            return false;
+         }
+
+      });
+      return res.json(data);
+   }   
+   if(req.body.keyword == ''){
+
+      let randomNum = randomNum_create(8,0);
+      getProductByRandom(randomNum);
+      return res.json(data);      
+      
+   }else{
+      var data = [];
+      product_images.forEach((item,index)=>{
+         if(item.id.indexOf(req.body.keyword) != -1 || item.title.indexOf(req.body.keyword) != -1 || item.brand.indexOf(req.body.keyword) != -1){
+            data.push(item);
+         }
+      });
+      if(data.length == 0){
+         let randomNum = randomNum_create(8,0);
+         getProductByRandom(randomNum);         
+      }else{
+         return res.json(data);
+      }
+
+   }
+   
+})
 app.listen(3000);
