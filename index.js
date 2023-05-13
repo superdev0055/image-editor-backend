@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(cors());
 
 app.get('/user/get-all-templates', function(req, res){
-
+   console.log("aa")
    var data = user_templates.user_templates.map((item ,i)=> {
       return {
         template_id:item.template_id,
