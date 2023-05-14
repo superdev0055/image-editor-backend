@@ -2,7 +2,9 @@ var express = require('express');
 const { writeFileSync } = require("fs");
 const bodyParser = require("body-parser");
 var app = express();
-var cors = require('cors')
+var cors = require('cors');
+
+app.use(cors());
 var user_templates = require("./user_templates.json");
 var demo_templates = require("./demo_templates.json");
 
@@ -12,7 +14,11 @@ const path_demo = "./demo_templates.json";
 
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
-app.use(cors());
+
+app.get("/test",function (req,res) {
+   console.log("test");
+   res.json("test");
+});
 
 app.get('/user/get-all-templates', function(req, res){
    console.log("aa")
@@ -141,5 +147,7 @@ app.post("/product/get-preview-image",function(req,res){
 
    }
    
-})
-app.listen(5000);
+});
+app.listen(3000, function() {
+   console.log('listening on 3000')
+ });
