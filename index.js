@@ -7,10 +7,13 @@ var cors = require('cors');
 app.use(cors());
 var user_templates = require("./user_templates.json");
 var demo_templates = require("./demo_templates.json");
+var element_templates = require("./element_templates.json");
+var short_tags = require("./short_tags.json");
 
 // to write
 const path_user = "./user_templates.json";
 const path_demo = "./demo_templates.json";
+const path_element = "./element_templates.json";
 
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
@@ -68,7 +71,7 @@ app.post('/user/create-template', function(req, res){
       return res.json("An error has occurred ", error);
    }
 });
-
+//demo
 app.get("/demo/get-all-templates",function(req,res){
    var data = demo_templates.demo_templates.map((item ,i)=> {
       return {
@@ -89,6 +92,7 @@ app.get("/demo/get-specific-template/:id",function(req,res){
    return res.json(template[0]);
 });
 
+//product
 app.post("/product/get-preview-image",function(req,res){
    var product_images = require("./product_images.json")
    product_images = product_images['product_images'];
@@ -148,6 +152,32 @@ app.post("/product/get-preview-image",function(req,res){
    }
    
 });
+
+//element
+app.get("/element/get-all-elements",function(req,res){
+   var data = element_templates.element_templates.map((item ,i)=> {
+      return {
+        id:item.id,
+        name:item.name,
+        image_url:item.image_url
+      };         
+    });      
+   return res.json(data);
+});
+
+app.get("/element/get-specific-element/:id",function(req,res){
+   var element = element_templates['element_templates'].filter((item)=>{
+      return item.id == req.params.id;
+   });
+   return res.json(element[0]);
+});
+
+//get ShortTag
+app.get("/tags/get-all-tags",function(req,res){
+   var data = short_tags.short_tags;
+   return res.json(data);
+});
+
 app.listen(3000, function() {
    console.log('listening on 3000')
  });

@@ -178,6 +178,7 @@
         },
         {
           "type": "group",
+          "customType":"text",
           "version": "5.3.0",
           "originX": "left",
           "originY": "top",
@@ -406,6 +407,7 @@
         },
         {
           "type": "group",
+          "customType":"text",
           "version": "5.3.0",
           "originX": "left",
           "originY": "top",
@@ -773,6 +775,7 @@
         },
         {
           "type": "group",
+          "customType":"text",
           "version": "5.3.0",
           "originX": "left",
           "originY": "top",
@@ -1278,6 +1281,7 @@
         },
         {
           "type": "group",
+          "customType":"text",
           "version": "5.3.0",
           "originX": "left",
           "originY": "top",
@@ -1414,6 +1418,7 @@
         },
         {
           "type": "group",
+          "customType":"text",
           "version": "5.3.0",
           "originX": "left",
           "originY": "top",
@@ -1548,6 +1553,7 @@
         },
         {
           "type": "group",
+          "customType":"text",
           "version": "5.3.0",
           "originX": "left",
           "originY": "top",
@@ -1682,6 +1688,7 @@
         },
         {
           "type": "group",
+          "customType":"text",
           "version": "5.3.0",
           "originX": "left",
           "originY": "top",
@@ -1818,6 +1825,7 @@
         },
         {
           "type": "group",
+          "customType":"text",
           "version": "5.3.0",
           "originX": "left",
           "originY": "top",
@@ -1952,6 +1960,7 @@
         },
         {
           "type": "group",
+          "customType":"text",
           "version": "5.3.0",
           "originX": "left",
           "originY": "top",
@@ -2360,6 +2369,7 @@
         },
         {
           "type": "group",
+          "customType":"text",
           "version": "5.3.0",
           "originX": "left",
           "originY": "top",
