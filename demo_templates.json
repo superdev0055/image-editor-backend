@@ -2,6 +2,7 @@
   "demo_templates": [
     {
       "version": "5.3.0",
+
       "objects": [
         {
           "type": "rect",
@@ -590,6 +591,7 @@
         "patternTransform": null,
         "id": 0
       },
+      
       "template_id": "15a07f48-32dc-4fd5-ae30-b2ff242458f9",
       "template_name": "aaaaaaaaaaaaa",
       "group_type":"facebook-image",

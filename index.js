@@ -78,6 +78,7 @@ app.get("/demo/get-all-templates",function(req,res){
       return {
         template_id:item.template_id,
         template_name:item.template_name,
+        group_type:item.group_type,
         template_image_url:item.template_image_url
       };         
     });      
