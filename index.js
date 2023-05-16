@@ -161,7 +161,8 @@ app.get("/element/get-all-elements",function(req,res){
       return {
         id:item.id,
         title:item.title,
-        image_url:item.image_url
+        image_url:item.image_url,
+        group_type:item.group_type
       };         
     });      
    return res.json(data);
