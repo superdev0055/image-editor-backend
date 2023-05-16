@@ -158,7 +158,7 @@ app.get("/element/get-all-elements",function(req,res){
    var data = element_templates.element_templates.map((item ,i)=> {
       return {
         id:item.id,
-        name:item.name,
+        title:item.title,
         image_url:item.image_url
       };         
     });      
