@@ -9,6 +9,7 @@ var user_templates = require("./user_templates.json");
 var demo_templates = require("./demo_templates.json");
 var element_templates = require("./element_templates.json");
 var short_tags = require("./short_tags.json");
+var canvas_sizes = require("./canvas_sizes.json");
 
 // to write
 const path_user = "./user_templates.json";
@@ -177,6 +178,14 @@ app.get("/tags/get-all-tags",function(req,res){
    var data = short_tags.short_tags;
    return res.json(data);
 });
+
+//get CanvasSize
+app.get("/get-all-canvas-sizes",function(req,res){
+   console.log("canvas")
+   var data = canvas_sizes.canvas_sizes;
+   return res.json(data);
+});
+
 
 app.listen(3000, function() {
    console.log('listening on 3000')
