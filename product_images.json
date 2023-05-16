@@ -6,7 +6,7 @@
             "id": "productid1",
             "brand": "brand1",
             "channel":"channel1",
-            "avability":"avability1",
+            "avablility":"avablility1",
             "customField1": "custom value1",
             "customField2": "custom value2"
         },
@@ -17,7 +17,7 @@
             "id": "productid2",
             "brand": "brand2",
             "channel":"channel2",
-            "avability":"avability2",            
+            "avablility":"avablility2",            
             "customField1": "custom value1",
             "customField2": "custom value2"
         },
@@ -27,7 +27,7 @@
             "id": "productid3",
             "brand": "brand3",
             "channel":"channel3",
-            "avability":"avability3",            
+            "avablility":"avablility3",            
             "customField1": "custom value1",
             "customField2": "custom value2"
         },
@@ -37,7 +37,7 @@
             "id": "productid4",
             "brand": "brand4",
             "channel":"channel4",
-            "avability":"avability4",            
+            "avablility":"avablility4",            
             "customField1": "custom value1",
             "customField2": "custom value2"
         },
@@ -47,7 +47,7 @@
             "id": "productid5",
             "brand": "brand5",
             "channel":"channel5",
-            "avability":"avability5",            
+            "avablility":"avablility5",            
             "customField1": "custom value1",
             "customField2": "custom value2"
         },
@@ -57,7 +57,7 @@
             "id": "productid10",
             "brand": "brand10",
             "channel":"channel10",
-            "avability":"avability10",            
+            "avablility":"avablility10",            
             "customField1": "custom value1",
             "customField2": "custom value2"
         },                
@@ -67,7 +67,7 @@
             "id": "productid9",
             "brand": "brand9",
             "channel":"channel9",
-            "avability":"avability9",            
+            "avablility":"avablility9",            
             "customField1": "custom value1",
             "customField2": "custom value2"
         },          
@@ -77,7 +77,7 @@
             "id": "productid7",
             "brand": "brand7",
             "channel":"channel7",
-            "avability":"avability7",            
+            "avablility":"avablility7",            
             "customField1": "custom value1",
             "customField2": "custom value2"
         },          
@@ -87,7 +87,7 @@
             "id": "productid8",
             "brand": "brand8",
             "channel":"channel8",
-            "avability":"avability8",            
+            "avablility":"avablility8",            
             "customField1": "custom value1",
             "customField2": "custom value2"
         }                              
