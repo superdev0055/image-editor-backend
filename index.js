@@ -20,17 +20,15 @@ app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 app.get("/test",function (req,res) {
-   console.log("test");
    res.json("test");
 });
 
 app.get('/user/get-all-templates', function(req, res){
-   console.log("aa")
    var data = user_templates.user_templates.map((item ,i)=> {
       return {
-        template_id:item.template_id,
-        template_name:item.template_name,
-        template_image_url:item.template_image_url
+        id:item.id,
+        name:item.name,
+        image_url:item.image_url
       };         
     });   
 
@@ -40,14 +38,14 @@ app.get('/user/get-all-templates', function(req, res){
 app.get('/user/get-specific-template/:id', function(req, res){
 
    var template = user_templates['user_templates'].filter((item)=>{
-      return item.template_id == req.params.id;
+      return item.id == req.params.id;
    });
    return res.json(template[0]);   
 });
 
 app.post('/user/update-template/:id', function(req, res){
    var index = user_templates['user_templates'].findIndex((item)=>{
-      return item.template_id == req.params.id;
+      return item.id == req.params.id;
    });   
    user_templates['user_templates'][index] = req.body.data;
    try {
@@ -62,24 +60,24 @@ app.post('/user/update-template/:id', function(req, res){
    }
 });
 
-app.post('/user/create-template', function(req, res){
-   user_templates['user_templates'].push(req.body.data);
+// app.post('/user/create-template', function(req, res){
+//    user_templates['user_templates'].push(req.body.data);
         
-   try {
-       writeFileSync(path_user, JSON.stringify(user_templates, null, 2), "utf8");
-       return res.json("Data successfully saved");
-   } catch (error) {
-      return res.json("An error has occurred ", error);
-   }
-});
+//    try {
+//        writeFileSync(path_user, JSON.stringify(user_templates, null, 2), "utf8");
+//        return res.json("Data successfully saved");
+//    } catch (error) {
+//       return res.json("An error has occurred ", error);
+//    }
+// });
 //demo
 app.get("/demo/get-all-templates",function(req,res){
    var data = demo_templates.demo_templates.map((item ,i)=> {
       return {
-        template_id:item.template_id,
-        template_name:item.template_name,
+        id:item.id,
+        name:item.name,
         group_type:item.group_type,
-        template_image_url:item.template_image_url
+        image_url:item.image_url
       };         
     });      
  
@@ -87,9 +85,8 @@ app.get("/demo/get-all-templates",function(req,res){
 });
 
 app.get("/demo/get-specific-template/:id",function(req,res){
-   console.log(req.params.id);
    var template = demo_templates['demo_templates'].filter((item)=>{
-      return item.template_id == req.params.id;
+      return item.id == req.params.id;
    });
    return res.json(template[0]);
 });
@@ -160,7 +157,7 @@ app.get("/element/get-all-elements",function(req,res){
    var data = element_templates.element_templates.map((item ,i)=> {
       return {
         id:item.id,
-        title:item.title,
+        name:item.name,
         image_url:item.image_url,
         group_type:item.group_type
       };         
@@ -183,10 +180,59 @@ app.get("/tags/get-all-tags",function(req,res){
 
 //get CanvasSize
 app.get("/get-all-canvas-sizes",function(req,res){
-   console.log("canvas")
    var data = canvas_sizes.canvas_sizes;
    return res.json(data);
 });
+// <------------------------- create user template --------------------------->
+
+// "id": "15a07f48-32dc-4fd5-ae30-b2ff242458f9",
+// "name": "aaaaaaaaaaaaaaaaaaaaaaaaa",
+// "image_url": "data:image/png;base64,
+
+app.post('/user/create-template', function(req, res){
+   user_templates['user_templates'].push(req.body.data);
+        
+   try {
+       writeFileSync(path_user, JSON.stringify(user_templates, null, 2), "utf8");
+       return res.json("Data successfully saved");
+   } catch (error) {
+      return res.json("An error has occurred ", error);
+   }
+});
+
+// <------------------------- create demo template part --------------------------->
+// "id": "15a07f48-32dc-4fd5-ae30-b2ff242458f9",
+// "name": "aaaaaaaaaaaaa",
+// "group_type":"facebook-image",
+// app.post('/user/create-template', function(req, res){
+//    demo_templates['demo_templates'].push(req.body.data);
+
+//    try {
+//        writeFileSync(path_demo, JSON.stringify(demo_templates, null, 2), "utf8");
+//        return res.json("Data successfully saved");
+//    } catch (error) {
+//       return res.json("An error has occurred ", error);
+//    }
+// });
+
+
+// <------------------------- create element template part --------------------------->
+
+
+// "id": "6020f57b-46fc-4210-9701-ed59e5cef655",
+// "title": "circle-yellow",
+// "group_type":"aaaaaa",
+// "type": "element",
+// app.post('/user/create-template', function(req, res){
+//    element_templates['element_templates'].push(req.body.data);
+        
+//    try {
+//        writeFileSync(path_element, JSON.stringify(element_templates, null, 2), "utf8");
+//        return res.json("Data successfully saved");
+//    } catch (error) {
+//       return res.json("An error has occurred ", error);
+//    }
+// });
 
 //get
 app.listen(3000, function() {
